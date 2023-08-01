@@ -22,6 +22,7 @@
         --P_Gray: #e0e0e0;
         --S_Gray: #111;
         --T_Gray: #707070;
+        --Q_Gray: #151515;
         --Primary: #7d0fc7;
         --Secundary: violet;
     }
@@ -47,15 +48,33 @@
 
     header .navegacao-primaria {
         display: flex;
-        gap: 2.5rem;
+        gap: 30px;
         align-items: center;
     }
 
     header .navegacao-primaria li a {
-        padding: 10px;
         color: var(--White);
+        width: 0px;
+        height: 0px;
         font-size: 1.3rem;
     }
+
+    header .navegacao-primaria li a::after {
+        content: '';
+        width: 0px;
+        height: 0px;
+        border-bottom: 4px solid transparent;
+        display: block;
+        transition: .8s;
+    }
+
+    header .navegacao-primaria li a:hover::after {
+        width: 100%;
+        height: 0px;
+        padding: 0px;
+        border-bottom: 4px solid var(--Primary);
+    }
+
     
 /* Fim Cabeçalho */
 
@@ -230,6 +249,103 @@
     }
 /* Fim Section Principal - About me */
 
+/* Section Skills */
+    .services {
+        margin-top: -30px;
+        padding: 60px;
+        background-color: var(--S_Gray);
+    }
+
+    .my_services {
+        padding: 60px;
+        color: var(--White);
+    }
+
+    .my_services ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .my_services ul li {
+        cursor: pointer;
+        border-radius: 15px;
+        position: relative;
+        padding: 10px;
+        display: grid;
+        gap: 30px;
+        text-align: center;
+        align-content: center;
+        max-width: 300px;
+        height: 300px;
+        background-color: var(--Q_Gray);
+        box-shadow: 0 0 3px var(--Primary);
+    }
+
+    .my_services li::before {
+        content: '';
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        border-top: 2px solid transparent;
+        border-right: 2px solid transparent;
+        transition: .5s ease-in-out;
+    }
+
+    .my_services li:hover::before {
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid var(--Secundary);
+        border-right: 2px solid var(--Secundary);
+    }
+
+    .my_services li::after {
+        content: '';
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        bottom: -2px;
+        left: -2px;
+        border-bottom: 2px solid transparent;
+        border-left: 2px solid transparent;
+        transition: .5s ease-in-out;
+    }
+
+    .my_services li:hover::after {
+        width: 100%;
+        height: 100%;
+        border-bottom: 2px solid var(--Secundary);
+        border-left: 2px solid var(--Secundary);
+    }
+
+    .my_services ul li i {
+        font-size: 2.7rem;
+        color: var(--Secundary);
+    }
+
+    .my_services ul li h3 {
+        color: var(--White);
+        font-size: 1.6rem;
+        font-family: 'poppins';
+        font-weight: 500;
+    }
+
+    .my_services ul li p {
+        color: var(--P_Gray);
+        font-size: 1.1rem;
+    }
+
+
+/* Fim Section Skills */
+
 /* Animações */
 @keyframes inicializar { /* Conteúdo de cima pra baixo */
     from {
@@ -276,3 +392,59 @@
     }
 }
 /* Fim Animações */
+
+/* Responsividade */
+
+    @media(max-width: 992px){
+        .sobre img {
+            grid-column: 1/-1;
+            justify-self: center;
+        }
+
+        .sobre_conteudo {
+            grid-column: 1/-1;
+        }
+
+        .section-div {
+            background-image: url("imagens/FotoPerfil.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .section-div img{
+            display: none;
+        }
+
+        header {
+            justify-content: space-between;
+            padding: 30px 70px;
+        }
+
+        header .navegacao-primaria {
+            display: none;
+            width: 200px;
+            text-align: center;
+        }
+
+        header .navegacao-primaria.ativado {
+            background: linear-gradient(rgba(43,42,42,0.176), rgba(46,46,46, 0.724));
+            position: absolute;
+            display: grid;
+            top: 80px;
+            color: var(--White);
+            z-index: 1;
+            padding: 30px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            border-radius: 0 0 4px 4px;
+            right: 20px;
+            animation: sobreSecao .5s ease-in-out forwards;
+        }
+
+        header i {
+            color: var(--Primary);
+            font-size: 3rem;
+        }
+    }
+
+/* Fim Responsividade */
